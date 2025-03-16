@@ -72,5 +72,5 @@ pipeline {
             echo 'Pipeline failed!'
         }
     }
-}
+
 
