@@ -29,6 +29,16 @@ pipeline {
                 }	    
             }
         }
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    // Push the Docker image to the Docker registry
+                    withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
+                        sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    }
+                }
+            }
+        }   
         stage('k8s deployment') {
             steps {
                 sh 'kubectl apply -f k8s-deploy.yml'
