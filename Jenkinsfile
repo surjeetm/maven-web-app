@@ -57,7 +57,7 @@ pipeline {
                 script {
                     // Update the Kubernetes deployment's container image in the deployment.yaml
                     sh """
-                    sed -i 's|image: .*|image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}|' k8s/deployment.yaml}
+                    sed -i 's|image: .*|image: ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG}|' k8s/deployment.yaml
                     """
                 }
             }
